@@ -4,7 +4,7 @@ int main()
 {
 	int arr[100];	//array of numbers
 	int n;	 // total no of elements
-	int k;	//comparitive element
+	int K;	//comparitive element
 	cout<<"Enter total elements: "<<endl;
 	cin>>n;
 	for(int i=0;i<n;i++)
@@ -13,48 +13,67 @@ int main()
 		cin>>arr[i];
 	}
 	cout<<"enter the comparision element: "<<endl;
-	cin>>k;
+	cin>>K;
 	int less=0,greater=0,equal=0;
 	for(int i=0;i<n;i++)
 	{
-		if(arr[i]<k)
+		if(arr[i]<K)
 		{
 			less++;	
 		}
-		if(arr[i]>k)
+		if(arr[i]>K)
 		{
 			greater++;	
-		}if(arr[i]==k)
+		}if(arr[i]==K)
 		{
 			equal++;	
 		}	
-	}	
-	if(less==greater)
-	{
-		cout<<"max subarray lenght is: "<<n;
 	}
-	int m=n;
-	if(less<greater)
+	cout<<"greater are :"<<greater<<endl;
+	cout<<"lesser are :"<<less<<endl;
+	cout<<"equal are :"<<equal<<endl;
+	int g=greater;
+	int l=less;
+	int max=n;
+	if(greater==less)
 	{
-		for(int i=0;i<n;i++)
+		cout<<"maximum lenght subarray is :"<<n;
+	}
+	else{
+	for(int j=1;j<=n;j++)//for size of subarray
+	{
+		for(int i=0;i<n-j+1;i++)//no of times output be print for respective size
 		{
-			if(arr[i]==k || arr[i]<k)
+			for(int k=0;k<j;k++)// for elements
 			{
-				continue;
+				if(arr[k+i]<K)
+				{
+					l--;
+					max--;
+				}
+				if(arr[k+i]>K)
+				{
+					g--;
+					max--;
+				}
+				if(arr[k+i]==K)
+				{
+					continue;
+				}
 			}
-			if(arr[i]>k)
+			if(l==g)
 			{
-				if(greater!=less)
-				{
-					greater--;
-					m--;
-				}
-				else
-				{
-					break;
-				}
+				cout<<"maximum subarray is:"<<max<<endl;
+				break;
 			}
+			g=greater;
+			l=less;
+			max=n;
 		}
-				cout<<"max subarray lenght is: "<<m;
-	}
+		if(l==g)
+			{
+				break;
+			}
+}
+}
 }
