@@ -1,0 +1,2 @@
+# Google_Code_For_Finding_Maximum_Subarray
+The task was to find the lenght of maximum subarray from the given array such that the total no of greater elements is equal to the count of smaller numbers. In this code the sliding window approach is used and the loop breaks once the condition of smaller count element and larger element count is  equal. The output gives the size of such a maximum array.
